@@ -1,14 +1,13 @@
 FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
-WORKDIR /app
+WORKDIR \app
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
-COPY StatNav.WebApplication/StatNav.WebApplication.csproj .
+COPY StatNav.WebApplication\StatNav.WebApplication.csproj .
 RUN nuget restore
 
 # copy everything else and build app
-COPY StatNav.WebApplication/. .
-WORKDIR /app
+COPY StatNav.WebApplication\. .
+WORKDIR \app
 RUN msbuild /p:Configuration=Release -r:False
 
 
