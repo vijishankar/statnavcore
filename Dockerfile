@@ -6,6 +6,11 @@ COPY *.sln .
 COPY StatNav.WebApplication/StatNav.WebApplication.csproj ./StatNav.WebApplication/
 RUN nuget restore
 
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install
+
 # copy everything else and build app
 COPY StatNav.WebApplication/. ./StatNav.WebApplication/
 WORKDIR /app/StatNav.WebApplication/
