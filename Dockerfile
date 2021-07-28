@@ -1,17 +1,19 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
 WORKDIR /app
- 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt-get install -y nodejs
-COPY . .
-RUN dotnet build "StatNav.WebApplication\StatNav.WebApplication.csproj" -c Release -o /app/build
- 
-FROM build AS publish
-RUN dotnet publish "StatNav.WebApplication\StatNav.WebApplication.csproj" -c Release -o /app/publish
- 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "StatNav.WebApplication.dll"]
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install --assume-yes nodejs
+
+COPY *.sln .
+# copy csproj and restore as distinct layers
+COPY StatNav.WebApplication/StatNav.WebApplication.csproj ./StatNav.WebApplication/
+RUN nuget restore
+
+# copy everything else and build app
+COPY StatNav.WebApplication/. ./StatNav.WebApplication/
+WORKDIR /app/StatNav.WebApplication/
+RUN msbuild /p:Configuration=Release /p:SkipInvalidConfigurations=true
+
+
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8 AS runtime
+WORKDIR /inetpub/wwwroot
