@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.PackageContainerVM>
+
+@{
+    ViewBag.Title = "Package Container";
+}
+
+<h4>Package Containers</h4>
+<partial name="_ExperimentTypeSelect" model="Model" />
+<p>
+    <a asp-controller="PackageContainer" asp-action="Create">Create New</a>
+</p>
+<partial name="_searchBox" />
+<table class="table">
+    <caption>List of Package Containers</caption>
+    <tr>      
+        <th scope="col">
+            <a asp-controller="PackageContainer" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Container Name
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        <th scope="col">
+            <a asp-controller="PackageContainer" asp-action="Index" asp-route-sortOrder="@ViewBag.TypeSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Type
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        <th scope="col">
+            <a asp-controller="PackageContainer" asp-action="Index" asp-route-sortOrder="@ViewBag.StageSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Stage
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>            
+            <td>                
+                <a asp-controller="PackageContainer" asp-action="Edit" asp-route-id="@item.Id">@item.PackageContainerName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetricModelStage.Title)
+            </td>
+
+        </tr>
+    }
+
+</table>

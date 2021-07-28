@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.SitesVM>
+
+@{
+    ViewBag.Title = "Sites";
+}
+
+<h4>Sites</h4>
+@*<partial name="_ExperimentTypeSelect" model="Model" />*@
+<p>
+    <a asp-controller="Sites" asp-action="Create">Create New</a>
+</p>
+<partial name="_searchBox" />
+<table class="table">
+    <caption>List of Sites</caption>
+    <tr>
+        @*<th scope="col">
+                <a asp-controller="Sites" asp-action="Index" asp-route-sortOrder="@ViewBag.IdSortParm" asp-route-searchString="@ViewBag.SearchString">
+                    ID
+                    <span class="glyphicon glyphicon-sort"></span>
+                </a>
+            </th>*@
+        <th scope="col">
+            <a asp-controller="Sites" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Site Name
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        <th scope="col">
+            <a asp-controller="Sites" asp-action="Index" asp-route-sortOrder="@ViewBag.LanguageSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Language
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        <th scope="col">
+            <a asp-controller="Sites" asp-action="Index" asp-route-sortOrder="@ViewBag.ModelSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Marketing Model
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>*@
+            <td>
+                <a asp-controller="Sites" asp-action="Edit" asp-route-id="@item.Id">@item.SiteName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarketingModel.ModelName)
+            </td>
+        </tr>
+    }
+
+</table>

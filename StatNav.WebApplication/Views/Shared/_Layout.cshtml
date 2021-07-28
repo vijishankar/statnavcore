@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatNav - @ViewBag.Title</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/Site.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>   
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts//jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/js/modernizr-2.8.3.min.js"></script>
+    <script src="~/Scripts/common.js"></script> 
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="containeriner">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="@Url.Action( "Index", "Home")"><img src="~/Content/Images/statnav logo.jpg" alt="StatNav Logo" /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    @*<li><a asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Sites
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Sites" asp-action="Index">Sites</a></li>
+                            <li><a asp-controller="Goals" asp-action="Index">Goals</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Packages
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="PackageContainer" asp-action="Index">Package Containers</a></li>
+                            <li><a asp-controller="MarketingAssetPackage" asp-action="Index">Marketing Asset Packages</a></li>
+                            <li><a asp-controller="Experiment" asp-action="Index">Experiments</a></li>
+                            <li><a asp-controller="Variant" asp-action="Index">Variants</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            UX
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="UXElements" asp-action="Index">UX Elements</a></li>
+                            <li><a asp-controller="UXExperiments" asp-action="Index">UX Experiments</a></li>
+                            <li><a asp-controller="UXVariants" asp-action="Index">UX Variants</a></li>
+                        </ul>
+                    </li>                   
+                </ul>              
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

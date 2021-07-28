@@ -1,0 +1,52 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.GoalsVM>
+
+@{
+    ViewBag.Title = "Goals";
+}
+
+<h4>Goals</h4>
+@*<partial name="_ExperimentTypeSelect" model="Model" />*@
+<p>
+    <a asp-controller="Goals" asp-action="Create">Create New</a>
+</p>
+<partial name="_searchBox" />
+<table class="table">
+    <caption>List of Goals</caption>
+    <tr>
+        <th scope="col">
+            <a asp-controller="Goals" asp-action="Index" asp-route-sortOrder="@ViewBag.IdSortParm" asp-route-searchString="@ViewBag.SearchString">
+                ID
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        <th scope="col">
+            <a asp-controller="Goals" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Goal
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        <th scope="col">
+            <a asp-controller="Goals" asp-action="Index" asp-route-sortOrder="@ViewBag.StageSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Stage
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                <a asp-controller="Goals" asp-action="Edit" asp-route-id="@item.Id">@item.GoalName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetricModelStage.Title)
+            </td>
+        </tr>
+    }
+
+</table>

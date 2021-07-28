@@ -1,0 +1,42 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.UXElementsVM>
+
+@{
+    ViewBag.Title = "UX Elements";
+}
+
+<h4>UX Elements</h4>
+@*<partial name="_ExperimentTypeSelect" model="Model" />*@
+<p>
+    <a asp-controller="UXElements" asp-action="Create">Create New</a>
+</p>
+<partial name="_searchBox" />
+<table class="table">
+    <caption>List of UX Elements</caption>
+    <tr>
+        <th scope="col">
+            <a asp-controller="UXElements" asp-action="Index" asp-route-sortOrder="@ViewBag.IdSortParm" asp-route-searchString="@ViewBag.SearchString">
+                ID
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        <th scope="col">
+            <a asp-controller="UXElements" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.SearchString">
+                UX Elements
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                <a asp-controller="UXElements" asp-action="Edit" asp-route-id="@item.Id">@item.UXElementName</a>
+            </td>
+        </tr>
+    }
+
+</table>

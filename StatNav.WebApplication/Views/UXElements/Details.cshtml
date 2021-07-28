@@ -1,0 +1,11 @@
+﻿@model StatNav.WebApplication.Models.UXElementsVM
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>UX Elements Details</h4>
+
+<partial name="_detail" model="Model" />
+<a asp-controller="UXElements" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-controller="UXElements" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+<a asp-controller="UXElements" asp-action="Index">Back to List</a>

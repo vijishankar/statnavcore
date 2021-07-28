@@ -1,0 +1,9 @@
+﻿@if (ViewBag.Notification != null)
+{
+    <span id="Notification" class="text-success pull-left">
+        @ViewBag.Notification
+    </span>
+}
+<script>
+    $("#Notification").fadeOut(3000);
+</script>

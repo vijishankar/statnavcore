@@ -1,0 +1,31 @@
+﻿@model StatNav.WebApplication.Models.PackageContainerVM
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                <label asp-for="@Model.PackageContainerName"></label>
+            </dt>
+            <dd>
+                @(Model.PackageContainerName != null ? Model.PackageContainerName : "")
+            </dd>
+            <dt>
+                <label asp-for="@Model.Type"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <dt>
+                <label asp-for="@Model.MetricModelStageId"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MetricModelStage.Title)
+            </dd>
+            <dt>
+                <label asp-for="@Model.Notes"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+        </dl>
+    </div>
+</div>

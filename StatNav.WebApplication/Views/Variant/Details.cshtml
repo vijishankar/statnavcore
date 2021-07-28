@@ -1,0 +1,12 @@
+﻿
+@model StatNav.WebApplication.Models.VariantVM
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>Variant Details</h4>
+<partial name="_detail" model="Model" />
+<a asp-controller="Varient" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-controller="Varient" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+<a asp-controller="Varient" asp-action="Index">Back to List</a>
+

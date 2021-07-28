@@ -1,0 +1,13 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.VariantVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Variants</h4>
+<partial name="_ExperimentTypeSelect" model="Model" />
+<p>
+    <a asp-controller="Variant" asp-action="Create">Create New</a>    
+</p>
+<partial name="_searchBox"/>
+<partial name="_list" model="Model"/>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.UXExperimentsVM>
+@{
+
+}
+<table class="table">
+    <caption>List of UX Experiments</caption>
+    <tr>
+        @if (ViewBag.Sortable != null)
+        {
+            <th scope="col">
+                <a asp-controller="UXExperiments" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.SearchString">
+                    UX Experiment
+                    <span class="glyphicon glyphicon-sort"></span>
+                </a>
+            </th>
+            <th scope="col">
+                Google Experiment
+            </th>
+        }
+        else
+        {
+            <th scope="col">
+                UX Experiment
+            </th>
+            <th scope="col">
+                Google Experiment
+            </th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a asp-controller="UXExperiments" asp-action="Edit" asp-route-id="@item.Id">@item.UXExperimentName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoogleExperimentId)
+            </td>
+        </tr>
+    }
+
+</table>

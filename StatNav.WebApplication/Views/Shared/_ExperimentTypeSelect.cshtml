@@ -1,0 +1,28 @@
+﻿@{
+    var selectedType = ViewBag.SelectedType;   
+}
+    <div class="form-group">
+        <select id="ddlExperimentType" class="form-control pull-right">
+            <option value="PackageContainer"> Package Containers</option>
+            <option value="MarketingAssetPackage">Marketing Asset Packages</option>
+            <option value="Experiment">Experiments</option>
+            <option value="Variant">Variants</option>
+            @*<option value="Goals">Goals</option>
+            <option value="Sites">Sites</option>
+            <option value="UXElements">UX Elements</option>
+            <option value="UXExperiments">UX Experiments</option>
+            <option value="UXVariants">UX Variants</option>*@
+        </select>    
+        <input type="hidden" asp-for="@selectedType">
+    </div>
+<script>
+    $(document).ready(function () {
+        var selectedType1 = $('#selectedType').val();
+       $('#ddlExperimentType').children('option[value="' + selectedType1 + '"]').prop('selected', true);      
+
+        $("#ddlExperimentType").change(function () {
+            var location = url + $('#ddlExperimentType').val();
+            window.location.href = location;
+        });
+    });
+</script>

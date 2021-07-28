@@ -1,0 +1,15 @@
+﻿@model StatNav.WebApplication.Models.MarketingAssetPackageVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Delete Marketing Asset Package</h4>
+<div class="alert alert-danger">Are you sure you want to remove this Marketing Asset Package? Removing this package will also remove all its experiments and variants</div>
+<partial name="_detail" model="Model" />
+<form asp-controller="MarketingAssetPackage" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-controller="MarketingAssetPackage" asp-action="Index">Back to List</a>
+</form>
+

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.ExperimentVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Experiments</h4>
+<partial name="_ExperimentTypeSelect" model="Model" />
+<p>
+    <a asp-controller="Experiment" asp-action="Create">Create New</a>
+</p>
+<partial name="_searchBox" />
+<partial name="_list" model="Model" />

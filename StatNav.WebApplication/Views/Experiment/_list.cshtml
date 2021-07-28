@@ -1,0 +1,70 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.ExperimentVM>
+@{
+
+}
+<table class="table">
+    <caption>List of Experiments</caption>
+    <tr>
+        @if (ViewBag.Sortable != null)
+        {
+            <th scope="col">
+                <a asp-controller="Experiment" asp-action="Index" asp-route-sortOrder="@ViewBag.IdSortParm" asp-route-searchString="@ViewBag.SearchString">
+                    ID
+                    <span class="glyphicon glyphicon-sort"></span>
+                </a>
+            </th>
+            <th scope="col">
+                <a asp-controller="Experiment" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.SearchString">
+                    Experiment Name
+                    <span class="glyphicon glyphicon-sort"></span>
+                </a>
+            </th>
+            <th scope="col">
+                <a asp-controller="Experiment" asp-action="Index" asp-route-sortOrder="@ViewBag.StartDateSortParm" asp-route-searchString="@ViewBag.SearchString">
+                    Start Date
+                    <span class="glyphicon glyphicon-sort"></span>
+                </a>
+            </th>
+            <th scope="col">
+                <a asp-controller="Experiment" asp-action="Index" asp-route-sortOrder="@ViewBag.EndDateSortParm" asp-route-searchString="@ViewBag.SearchString">
+                    End Date
+                    <span class="glyphicon glyphicon-sort"></span>
+                </a>
+            </th>
+        }
+        else
+        {
+            <th scope="col">
+                ID
+            </th>
+            <th scope="col">
+                Experiment Name
+            </th>
+            <th scope="col">
+                Start Date
+            </th>
+            <th scope="col">
+                End Date
+            </th>
+        }
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                <a asp-controller="Experiment" asp-action="Edit" asp-route-id="@item.Id">@item.ExperimentName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDateTime)
+            </td>
+
+        </tr>
+    }
+
+</table>

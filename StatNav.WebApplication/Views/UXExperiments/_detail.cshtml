@@ -1,0 +1,27 @@
+﻿@model StatNav.WebApplication.Models.UXExperimentsVM
+<dl class="dl-horizontal">
+    <dt>
+        <label asp-for="@Model.Id"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt>
+        <label asp-for="@Model.UXElementId"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.UXElements.UXElementName)
+    </dd>
+    <dt>
+        <label asp-for="@Model.UXExperimentName"></label>
+    </dt>
+    <dd>
+        @(Model.UXExperimentName != null ? Model.UXExperimentName : "")
+    </dd>
+    <dt>
+        <label asp-for="@Model.GoogleExperimentId"></label>
+    </dt>
+    <dd>
+        @(Model.GoogleExperimentId != null ? Model.GoogleExperimentId : "")
+    </dd>
+</dl>

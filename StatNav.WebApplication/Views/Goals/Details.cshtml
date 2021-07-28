@@ -1,0 +1,11 @@
+﻿@model StatNav.WebApplication.Models.GoalsVM
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>Goal Details</h4>
+
+<partial name="_detail" model="Model" />
+<a asp-controller="Goals" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-controller="Goals" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+<a asp-controller="Goals" asp-action="Index">Back to List</a>

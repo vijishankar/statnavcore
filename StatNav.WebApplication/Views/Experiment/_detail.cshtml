@@ -1,0 +1,73 @@
+﻿@model StatNav.WebApplication.Models.ExperimentVM
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                <label asp-for="@Model.Id"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt>
+                <label asp-for="@Model.MarketingAssetPackageId"></label>
+            </dt>
+            <dd>
+                @(Model.MarketingAssetPackage != null ? Model.MarketingAssetPackage.MAPName : "")
+            </dd>
+            <dt>
+                <label asp-for="@Model.ExperimentName"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ExperimentName)
+            </dd>
+            <dt>
+                <label asp-for="@Model.RequiredDurationForSignificance"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RequiredDurationForSignificance)
+            </dd>
+            <dt>
+                <label asp-for="@Model.ExperimentNumber"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ExperimentNumber)
+            </dd>
+            <dt>
+                <label asp-for="@Model.StartDateTime"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StartDateTime)
+            </dd>
+            <dt>
+                <label asp-for="@Model.EndDateTime"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EndDateTime)
+            </dd>
+            <dt>
+                <label asp-for="@Model.SuccessOutcome"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SuccessOutcome)
+            </dd>
+            <dt>
+                <label asp-for="@Model.FailureOutcome"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FailureOutcome)
+            </dd>
+            <dt>
+                <label asp-for="@Model.Variant"></label>
+            </dt>
+            <dd>                
+            </dd>
+            </dl>
+    </div>
+    <div class="col-md-6">
+        <h4>Variants</h4>
+    <a asp-controller="Variant" asp-action="Create" asp-route-id="@Model.Id">
+        Create Variant for this Experiment
+    </a>
+    <partial name="../Variant/_list" model="Model.Variant" />
+    </div>
+</div>

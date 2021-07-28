@@ -1,0 +1,64 @@
+﻿@model StatNav.WebApplication.Models.UXExperimentsVM
+
+@{
+    String action = ViewBag.Action;
+}
+<form asp-controller="UXExperiments" method="post">
+    <div class="form-horizontal">
+        <partial name="_SaveButton" />
+        <h4>@action UX Experiments</h4>
+        <hr />
+        <partial name="_Confirmation" />
+        <p>&nbsp;</p>
+        <div asp-validation-summary="None" class="text-danger"></div>
+        <input asp-for="@Model.Id" hidden />
+        @if (action == "Edit")
+        {
+            <div class="form-group">
+                <label asp-for="@Model.Id" class="control-label col-md-2"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.Id" class="form-control" disabled="disabled" />
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <label asp-for="@Model.UXElementId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="@Model.UXElementId" data-val-number="The UX Element field is required.."
+                        asp-items="@(new SelectList(ViewBag.Elements,"Id","UXElementName"))" class="form-control">
+                    <option>Please Select...</option>
+                </select>
+                <span asp-validation-for="@Model.UXElementId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.UXExperimentName" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.UXExperimentName" class="form-control" />
+                <span asp-validation-for="@Model.UXExperimentName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.GoogleExperimentId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.GoogleExperimentId" class="form-control" />
+                <span asp-validation-for="@Model.GoogleExperimentId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+</form>
+@if (action == "Edit")
+{
+    <div>
+        <a asp-controller="UXExperiments" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+    </div>
+}
+@*<div class="col-md-6">
+        <p>&nbsp;</p>
+        @if (action == "Edit")
+        {
+            <h4>Marketing Asset Packages</h4>
+            <a asp-controller="MarketingAssetPackage" asp-action="Create" asp-route-id="@Model.Id">Create Marketing Asset Package for this Package Container</a>
+            <partial name="../MarketingAssetPackage/_list" for="MarketingAssetPackage" />
+        }
+    </div>*@

@@ -1,0 +1,14 @@
+﻿@model StatNav.WebApplication.Models.GoalsVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Delete Goal</h4>
+<div class="alert alert-danger">Are you sure you want to remove this Goal?</div>
+<partial name="_detail" model="Model" />
+<form asp-controller="Goals" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-controller="Goals" asp-action="Index">Back to List</a>
+</form>

@@ -1,0 +1,27 @@
+﻿@model StatNav.WebApplication.Models.GoalsVM
+<dl class="dl-horizontal">
+    <dt>
+        <label asp-for="@Model.Id"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt>
+        <label asp-for="@Model.GoalName"></label>
+    </dt>
+    <dd>
+        @(Model.GoalName != null ? Model.GoalName : "")
+    </dd>
+    <dt>
+        <label asp-for="@Model.MetricModelStageId"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.MetricModelStage.Title)
+    </dd>
+    <dt>
+        <label asp-for="@Model.GAGoal"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.GAGoal)
+    </dd>
+</dl>

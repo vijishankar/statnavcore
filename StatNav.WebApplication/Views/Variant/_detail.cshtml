@@ -1,0 +1,54 @@
+﻿@model StatNav.WebApplication.Models.VariantVM
+
+
+<dl class="dl-horizontal">
+    <dt>
+        <label asp-for="@Model.Id"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt>
+        <label asp-for="@Model.ExperimentId"></label>
+    </dt>
+    <dd>
+        @(Model.Experiment != null ? Model.Experiment.ExperimentName : "")
+    </dd>
+    <dt>
+        <label asp-for="@Model.VariantName"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.VariantName)
+    </dd>
+    <dt>
+        <label asp-for="@Model.Control"></label>
+    </dt>
+    <dd>
+        @(Model.Control ? "True" : "False")        
+    </dd>
+    <dt>
+        <label asp-for="@Model.VariantTargetMetricModelId"></label>
+    </dt>
+    <dd>
+        @(Model.VariantTargetMetricModel != null ? Model.VariantTargetMetricModel.Title : "");
+    </dd>
+    <dt>
+        <label asp-for="@Model.TargetMet"></label>
+    </dt>
+    <dd>
+        @(Model.TargetMet ? "True" : "False")        
+    </dd>
+    <dt>
+        <label asp-for="@Model.VariantImpactMetricModelId"></label>
+    </dt>
+    <dd>
+        @(Model.VariantImpactMetricModel != null ? Model.VariantImpactMetricModel.Title : "");
+    </dd>
+    <dt>
+        <label asp-for="@Model.ImpactMet"></label>
+    </dt>
+    <dd>
+        @(Model.ImpactMet ? "True" : "False")        
+    </dd>   
+</dl>
+

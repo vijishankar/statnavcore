@@ -1,0 +1,14 @@
+﻿@model StatNav.WebApplication.Models.PackageContainerVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Delete Package Container</h4>
+<div class="alert alert-danger">Are you sure you want to remove this Package Container? Removing this package will also remove all its marketing asset packages, experiments and variants</div>
+<partial name="_detail" model="Model" />
+<form asp-controller="PackageContainer" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-controller="PackageContainer" asp-action="Index">Back to List</a>
+</form>

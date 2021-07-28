@@ -1,0 +1,146 @@
+﻿@model StatNav.WebApplication.Models.MarketingAssetPackageVM
+
+@{
+    String action = ViewBag.Action;
+}
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="MarketingAssetPackage" method="post">
+            <div class="form-horizontal">
+                <h4>@action Marketing Asset Package</h4>
+                <partial name="_SaveButton" />
+                <hr />
+                <partial name="_Confirmation" />
+                <p>&nbsp;</p>
+                <div asp-validation-summary="None" class="text-danger"></div>
+                <input asp-for="@Model.Id" hidden />
+                @*@if (action == "Edit") //story 2069
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => Model.Id, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                            </div>
+                        </div>
+                    }*@
+                <div class="form-group">
+                    <label asp-for="@Model.MAPName" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.MAPName" class="form-control" />
+                        <span asp-validation-for="@Model.MAPName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.PackageContainerId" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="@Model.PackageContainerId" data-val-number="The Container field is required.."
+                                asp-items="@(new SelectList(ViewBag.PackageContainers,"Id","PackageContainerName"))" class="form-control">
+                            <option>Please Select...</option>
+                        </select>
+                        <span asp-validation-for="@Model.PackageContainerId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Hypothesis" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="@Model.Hypothesis" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.Hypothesis" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Problem" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="@Model.Problem" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.Problem" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.ProblemValidation" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="@Model.ProblemValidation" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.ProblemValidation" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.MethodId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MethodId", new SelectList(ViewBag.Methods, "Id", "Title"), "Please Select...", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MethodId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                @*REMOVED 2069*@
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.MAPTargetMetricModelId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MAPTargetMetricModelId", new SelectList(ViewBag.MetricModels, "Id", "Title"), "Please Select...", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MAPTargetMetricModelId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TargetValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TargetValue, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TargetValue, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MAPImpactMetricModelId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MAPImpactMetricModelId", new SelectList(ViewBag.MetricModels, "Id", "Title"), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MAPImpactMetricModelId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImpactValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ImpactValue, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ImpactValue, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.ExperimentStatusId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ExperimentStatusId", new SelectList(ViewBag.ExperimentStatuses, "Id", "StatusName"), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ExperimentStatusId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    <label asp-for="@Model.Notes" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="@Model.Notes" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.Notes" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        @if (action == "Edit")
+        {
+            <div>
+                <a asp-controller="MarketingAssetPackage" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+            </div>
+        }
+        @*@section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@
+    </div>
+    <div class="col-md-6">
+        <p>&nbsp;</p>
+        @if (action == "Edit")
+        {
+            <h4>Experiments</h4>
+            <a asp-controller="Experiment" asp-action="Create" asp-route-mapId="@Model.Id">Create Experiment for this Marketing Asset Package</a>
+            <partial name="../Experiment/_list" for="Experiment" />
+        }
+    </div>
+</div>

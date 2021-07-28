@@ -1,0 +1,57 @@
+﻿@model StatNav.WebApplication.Models.MarketingAssetPackageVM
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                <label asp-for="@Model.UserId"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+            <dt>
+                <label asp-for="@Model.TeamId"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TeamId)
+            </dd>
+            <dt>
+                <label asp-for="@Model.MAPName"></label>
+            </dt>
+            <dd>
+                @(Model.MAPName != null ? Model.MAPName : "")
+            </dd>
+            <dt>
+                <label asp-for="@Model.Problem"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Problem)
+            </dd>
+            <dt>
+                <label asp-for="@Model.ProblemValidation"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProblemValidation)
+            </dd>
+            <dt>
+                <label asp-for="@Model.Hypothesis"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Hypothesis)
+            </dd>
+            <dt>
+                <label asp-for="@Model.Notes"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+            <dt>
+                <label asp-for="@Model.PackageContainerId"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PackageContainer.PackageContainerName)
+            </dd>
+            <dd>
+            </dd>
+        </dl>
+    </div>
+</div>

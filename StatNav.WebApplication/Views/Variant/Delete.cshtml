@@ -1,0 +1,14 @@
+﻿@model StatNav.WebApplication.Models.VariantVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Delete Variant</h4>
+<div class="alert alert-danger">Are you sure you want to remove this variant?</div>
+<partial name="_detail" model="Model" />
+<form asp-controller="Variant" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-controller="Variant" asp-action="Index">Back to List</a>
+</form>

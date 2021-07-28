@@ -1,0 +1,111 @@
+﻿@model StatNav.WebApplication.Models.ExperimentVM
+
+@{
+    String action = ViewBag.Action;
+}
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-controller="Experiment" method="post">
+                <div class="form-horizontal">
+                    <partial name="_SaveButton" />
+                    <h4>@action Experiment</h4>
+                    <hr />
+                    <partial name="_Confirmation" />
+                    <p>&nbsp;</p>
+                    <div asp-validation-summary="None" class="text-danger" ></div>
+                    <input asp-for="@Model.Id" hidden />
+                    @if (action == "Edit")
+                    {
+                        <div class="form-group">
+                            <label asp-for="@Model.Id" class="control-label col-md-2"></label>
+                            <div class="col-md-10">
+                                <input asp-for="@Model.Id" class="form-control" disabled="disabled" />
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label asp-for="@Model.MarketingAssetPackageId" class="control-label col-md-2"></label>
+                        <div class="col-md-10">
+                            <select asp-for="@Model.MarketingAssetPackageId" data-val-number="The Marketing Asset Package field is required.."
+                                    asp-items="@(new SelectList(ViewBag.MarketingAssetPackages,"Id","MAPName"))" class="form-control">
+                                <option>Please Select...</option>
+                            </select>
+                            <span asp-validation-for="@Model.MarketingAssetPackageId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.ExperimentName" class="control-label col-md-2"></label>
+                        <div class="col-md-10">
+                            <input asp-for="@Model.ExperimentName" class="form-control"/>
+                            <span asp-validation-for="@Model.ExperimentName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                    @Html.LabelFor(model => model.RequiredDurationForSignificance, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RequiredDurationForSignificance, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RequiredDurationForSignificance, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IterationNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IterationNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IterationNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EndDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EndDateTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                    <div class="form-group">
+                        <label asp-for="@Model.SuccessOutcome" class="control-label col-md-2"></label>
+                        <div class="col-md-10">
+                            <textarea asp-for="@Model.SuccessOutcome" class="form-control"></textarea>
+                            <span asp-validation-for="@Model.SuccessOutcome" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.FailureOutcome" class="control-label col-md-2"></label>
+                        <div class="col-md-10">
+                            <textarea asp-for="@Model.FailureOutcome" class="form-control"></textarea>
+                            <span asp-validation-for="@Model.FailureOutcome" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @if (action == "Edit")
+            {
+                <div>
+                    <a asp-controller="Experiment" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                </div>
+            }
+        </div>
+            <div class="col-md-6">
+                <p>&nbsp;</p>
+                @if (action == "Edit")
+                {
+                    <h4>Variants</h4>
+                    <a asp-controller="Variant" asp-action="Create" asp-route-id="@Model.Id">Create Variant for this Experiment</a>
+                    <partial name="../Variant/_list" for="@Model.Variant" />
+                }
+            </div>
+        </div>

@@ -1,0 +1,33 @@
+﻿@model StatNav.WebApplication.Models.SitesVM
+<dl class="dl-horizontal">
+    <dt>
+        <label asp-for="@Model.Id"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt>
+        <label asp-for="@Model.ParentId"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Parent.ParentName)
+    </dd>
+    <dt>
+        <label asp-for="@Model.SiteName"></label>
+    </dt>
+    <dd>
+        @(Model.SiteName != null ? Model.SiteName : "")
+    </dd>
+    <dt>
+        <label asp-for="@Model.Language"></label>
+    </dt>
+    <dd>
+        @(Model.SiteName != null ? Model.Language : "")
+    </dd>
+    <dt>
+        <label asp-for="@Model.ModelId"></label>
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.MarketingModel.ModelName)
+    </dd>
+</dl>

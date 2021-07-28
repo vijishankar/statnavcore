@@ -1,0 +1,68 @@
+﻿@model StatNav.WebApplication.Models.SitesVM
+
+@{
+    String action = ViewBag.Action;
+}
+<form asp-controller="Sites" method="post">
+    <div class="form-horizontal">
+        <partial name="_SaveButton" />
+        <h4>@action Sites</h4>
+        <hr />
+        <partial name="_Confirmation" />
+        <p>&nbsp;</p>
+        <div asp-validation-summary="None" class="text-danger"></div>
+        <input asp-for="@Model.Id" hidden />
+        @if (action == "Edit")
+        {
+            <div class="form-group">
+                <label asp-for="@Model.Id" class="control-label col-md-2"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.Id" class="form-control" disabled="disabled" />
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <label asp-for="@Model.ParentId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="@Model.ParentId" data-val-number="The Parent field is required.."
+                        asp-items="@(new SelectList(ViewBag.Parents,"Id","ParentName"))" class="form-control">
+                    <option>Please Select...</option>
+                </select>
+                <span asp-validation-for="@Model.ParentId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.SiteName" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.SiteName" class="form-control" />
+                <span asp-validation-for="@Model.SiteName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Language" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.Language" class="form-control" />
+                <span asp-validation-for="@Model.Language" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.ModelId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="@Model.ModelId" data-val-number="The Model field is required.."
+                        asp-items="@(new SelectList(ViewBag.Models,"Id","ModelName"))" class="form-control">
+                    <option>Please Select...</option>
+                </select>
+                <span asp-validation-for="@Model.ModelId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+</form>
+@if (action == "Edit")
+{
+    <div>
+        <a asp-controller="Sites" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+    </div>
+}
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

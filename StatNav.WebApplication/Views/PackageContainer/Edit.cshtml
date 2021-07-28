@@ -1,0 +1,72 @@
+﻿@model StatNav.WebApplication.Models.PackageContainerVM
+
+@{
+    String action = ViewBag.Action;
+}
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="PackageContainer" method="post">
+            <div class="form-horizontal">
+                <h4>@action Package Container</h4>
+                <partial name="_SaveButton" />
+                <hr />
+                <partial name="_Confirmation" />
+                <p>&nbsp;</p>
+                <div asp-validation-summary="None" class="text-danger"></div>
+                <input asp-for="@Model.Id" hidden />
+                <div class="form-group">
+                    <label asp-for="@Model.PackageContainerName" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.PackageContainerName" class="form-control" />
+                        <span asp-validation-for="@Model.PackageContainerName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Type" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.Type" value="Persistent" type="radio" /> Persistent<br />
+                        <input asp-for="@Model.Type" value="Dynamic" type="radio" /> Dynamic<br />
+                        <span asp-validation-for="@Model.Type" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.MetricModelStageId" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="@Model.MetricModelStageId" data-val-number="The Stage field is required.."
+                                asp-items="@(new SelectList(ViewBag.Stages,"Id","Title"))" class="form-control">
+                            <option>Please Select...</option>
+                        </select>
+                        <span asp-validation-for="@Model.MetricModelStageId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Notes" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="@Model.Notes" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.Notes" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        @if (action == "Edit")
+        {
+            <div>
+                <a asp-controller="PackageContainer" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+            </div>
+        }
+        @*@section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@
+    </div>
+    <div class="col-md-6">
+        <p>&nbsp;</p>
+        @if (action == "Edit")
+        {
+            <h4>Marketing Asset Packages</h4>
+            <a asp-controller="MarketingAssetPackage" asp-action="Create" asp-route-id="@Model.Id">Create Marketing Asset Package for this Package Container</a>
+            <partial name="../MarketingAssetPackage/_list" for="MarketingAssetPackage" />
+        }
+    </div>
+</div>

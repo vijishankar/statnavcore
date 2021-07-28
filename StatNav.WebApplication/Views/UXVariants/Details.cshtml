@@ -1,0 +1,11 @@
+﻿@model StatNav.WebApplication.Models.UXVariantsVM
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>UX Variants Details</h4>
+
+<partial name="_detail" model="Model" />
+<a asp-controller="UXVariants" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-controller="UXVariants" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+<a asp-controller="UXVariants" asp-action="Index">Back to List</a>

@@ -1,0 +1,25 @@
+﻿@model StatNav.WebApplication.Models.UXElementsVM
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                <label asp-for="@Model.Id"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt>
+                <label asp-for="@Model.ParentId"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Parent.ParentName)
+            </dd>
+            <dt>
+                <label asp-for="@Model.UXElementName"></label>
+            </dt>
+            <dd>
+                @(Model.UXElementName != null ? Model.UXElementName : "")
+            </dd>
+        </dl>
+    </div>
+</div>

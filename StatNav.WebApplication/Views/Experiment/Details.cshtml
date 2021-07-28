@@ -1,0 +1,13 @@
+﻿
+@model StatNav.WebApplication.Models.ExperimentVM
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>Experiment Details</h4>
+
+<partial name="_detail" model="Model"/>
+<a asp-controller="Experiment" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-controller="Experiment" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+<a asp-controller="Experiment" asp-action="Index">Back to List</a>
+

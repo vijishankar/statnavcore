@@ -1,0 +1,19 @@
+﻿@model StatNav.WebApplication.Models.MarketingModelVM
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                <label asp-for="@Model.Id"></label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt>
+                <label asp-for="@Model.ModelName"></label>
+            </dt>
+            <dd>
+                @(Model.ModelName != null ? Model.ModelName : "")
+            </dd>
+        </dl>
+    </div>
+</div>

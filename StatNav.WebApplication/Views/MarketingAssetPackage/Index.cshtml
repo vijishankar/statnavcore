@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StatNav.WebApplication.Models.MarketingAssetPackageVM>
+
+@{
+    ViewBag.Title = "Marketing Asset Package";
+}
+
+<h4>Marketing Asset Packages</h4>
+<partial name="_ExperimentTypeSelect" model="Model" />
+<p>
+    <a asp-controller="MarketingAssetPackage" asp-action="Create">Create New</a>
+</p>
+<partial name="_searchBox" />
+<table class="table">
+    <caption>List of Marketing Asset Packages</caption>
+    <tr>
+        @*<th scope="col">
+                <a href="@Url.Action("Index",new { sortOrder = ViewBag.IdSortParm })">ID <span class="glyphicon glyphicon-sort"></span></a>
+            </th>*@
+        <th scope="col">
+            <a asp-controller="MarketingAssetPackage" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.SearchString">
+                Package Name
+                <span class="glyphicon glyphicon-sort"></span>
+            </a>
+        </th>
+        @*<th scope="col">
+                <a href="@Url.Action("Index",new { sortOrder = ViewBag.StatusSortParm })">Status <span class="glyphicon glyphicon-sort"></span></a>
+            </th>*@
+        <th scope="col">
+            <a>Hypothesis</a>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>*@
+            <td>
+                <a asp-controller="MarketingAssetPackage" asp-action="Edit" asp-route-id="@item.Id">@item.MAPName</a>
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ExperimentStatus.StatusName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Hypothesis)
+            </td>
+
+        </tr>
+    }
+
+</table>

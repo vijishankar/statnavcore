@@ -1,0 +1,13 @@
+﻿@model StatNav.WebApplication.Models.MarketingModelVM
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Delete Marketing Model</h4>
+<div class="alert alert-danger">Are you sure you want to remove this Marketing Model?</div>
+<partial name="_detail" model="Model" />
+<form asp-controller="MarketingModel" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-controller="MarketingModel" asp-action="Index">Back to List</a>
+</form>
