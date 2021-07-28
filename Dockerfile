@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
+FROM mcr.microsoft.com/dotnet/framework/aspnetapp:4.8 AS build
 WORKDIR /app
 
 COPY *.sln .
