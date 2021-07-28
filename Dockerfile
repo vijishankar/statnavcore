@@ -7,8 +7,8 @@ COPY StatNav.WebApplication/*.csproj .
 RUN nuget restore
 
 # copy everything else and build app
-COPY StatNav.WebApplication/. ./aspnetapp/
-WORKDIR /app/aspnetapp
+COPY StatNav.WebApplication/. .
+WORKDIR /app
 RUN msbuild /p:Configuration=Release -r:False
 
 
