@@ -3,7 +3,7 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY StatNav.WebApplication/*.csproj .
+COPY StatNav.WebApplication/StatNav.WebApplication.csproj .
 RUN nuget restore
 
 # copy everything else and build app
