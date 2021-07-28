@@ -1,5 +1,9 @@
-FROM mcr.microsoft.com/dotnet/framework/aspnetapp:4.8 AS build
+FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
 WORKDIR /app
+
+SHELL ["powershell"]
+RUN iwr -useb get.scoop.sh | iex
+RUN scoop install nodejs
 
 COPY *.sln .
 # copy csproj and restore as distinct layers
